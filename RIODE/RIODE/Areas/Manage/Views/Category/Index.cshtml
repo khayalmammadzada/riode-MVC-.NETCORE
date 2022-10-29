@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<Category>
+
+<div class="main-panel">
+    <div>
+        <a asp-area="Manage" asp-controller="Category" asp-action="Create" class="btn btn-success">Create new category</a>
+    </div>
+    <div class="table-responsive pt-3">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Category category in Model)
+                {
+                    <tr>
+                        <td>
+                            @category.Name
+                        </td>
+                        <td>
+                            <img style="width:150px !important; height:150px; object-fit:contain" src="~/assets/images/categories/@category.ImageName" alt="" />
+                        </td>
+                        <td class="d-flex">
+                            <div>
+                                <a asp-area="Manage" asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" class="btn btn-warning">
+                                    <i class="mdi mdi-border-color"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a asp-area="Manage" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger cat-del">
+                                    <i class="mdi mdi-delete"></i>
+                                </a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>$("tr").on("click", ".cat-del",function(e){
+            e.preventDefault();
+            let a = $(this)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "GET",
+                        url: a.attr('href'),
+                    }).done(function () {
+                        let status = a.parent().prev().prev();
+                        if (status.text().trim().toLowerCase() == "active") {
+                            status.children().toggleClass("alert-success alert-danger");
+                            status.children().text("Deleted")
+                        }
+                        else{
+                            status.parent().remove()
+                        }
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }).fail(function (err) {
+                        Swal.fire(
+                            'Oops!',
+                            err.responseText,
+                            'error'
+                        )
+
+                    })
+                }
+            })
+        })
+</script>
+}

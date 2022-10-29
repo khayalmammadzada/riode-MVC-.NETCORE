@@ -1,0 +1,60 @@
+﻿<Properties StartupConfiguration="{6ED49AF1-5F85-4453-9B56-802F682AA55A}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RIODE/Models/Brand.cs">
+    <Files>
+      <File FileName="RIODE/Controllers/HomeController.cs" Line="28" Column="5" />
+      <File FileName="RIODE/Controllers/ProductController.cs" Line="44" Column="15" />
+      <File FileName="RIODE/Models/Product.cs" Line="23" Column="20" />
+      <File FileName="RIODE/ViewModels/ShopIndexVM.cs" Line="14" Column="42" />
+      <File FileName="RIODE/Views/Product/Index.cshtml" Line="58" Column="68" />
+      <File FileName="RIODE/Views/Shared/_ProductGridPartialView.cshtml" Line="35" Column="86" />
+      <File FileName="RIODE/ViewModels/ShopAndFilterVM.cs" Line="1" Column="1" />
+      <File FileName="RIODE/Models/Brand.cs" Line="8" Column="53" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="RIODE" expanded="True">
+            <Node name="RIODE" expanded="True">
+              <Node name="Areas" expanded="True">
+                <Node name="Manage" expanded="True">
+                  <Node name="Controllers" expanded="True" />
+                  <Node name="Views" expanded="True">
+                    <Node name="Product" expanded="True" />
+                    <Node name="Shared" expanded="True" />
+                    <Node name="Subcategory" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="DAL" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Brand.cs" selected="True" />
+              </Node>
+              <Node name="Services" expanded="True" />
+              <Node name="Utilities" expanded="True">
+                <Node name="Enums" expanded="True" />
+              </Node>
+              <Node name="ViewComponents" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Product" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.RIODE PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

@@ -1,0 +1,86 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Models\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\Manage\" />
+    <None Remove="DAL\" />
+    <None Remove="Areas\Manage\Controllers\" />
+    <None Remove="Areas\Manage\Views\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Areas\Manage\Views\Dashboard\" />
+    <None Remove="Areas\Manage\Views\Shared\" />
+    <None Remove="Areas\Manage\Data\" />
+    <None Remove="Areas\Manage\Models\" />
+    <None Remove="Areas\Manage\Views\Category\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\Footer\" />
+    <None Remove="Areas\Manage\Views\Slider\" />
+    <None Remove="Views\Product\" />
+    <None Remove="Areas\Manage\Views\Product\" />
+    <None Remove="Views\Account\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+    <None Remove="Areas\Manage\Views\Subcategory\" />
+    <None Remove="Utilities\Enums\" />
+    <None Remove="Areas\Manage\Views\Service\" />
+    <None Remove="Areas\Manage\Views\Brand\" />
+    <None Remove="Z.EntityFramework.Plus.QueryIncludeOptimized.EFClassic" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Manage\" />
+    <Folder Include="DAL\" />
+    <Folder Include="Areas\Manage\Controllers\" />
+    <Folder Include="Areas\Manage\Views\" />
+    <Folder Include="Areas\Manage\Views\Dashboard\" />
+    <Folder Include="wwwroot\assets\" />
+    <Folder Include="Areas\Manage\Views\Shared\" />
+    <Folder Include="wwwroot\manage\" />
+    <Folder Include="wwwroot\manage\assets\" />
+    <Folder Include="Areas\Manage\Data\" />
+    <Folder Include="Areas\Manage\Models\" />
+    <Folder Include="Areas\Manage\Views\Category\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Footer\" />
+    <Folder Include="Areas\Manage\Views\Slider\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Areas\Manage\Views\Product\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Areas\Manage\Views\Subcategory\" />
+    <Folder Include="Utilities\Enums\" />
+    <Folder Include="Areas\Manage\Views\Service\" />
+    <Folder Include="Areas\Manage\Views\Brand\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\assets\" />
+    <Content Remove="wwwroot\manage\" />
+    <Content Remove="wwwroot\manage\assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.10" />
+    <PackageReference Include="Z.EntityFramework.Plus.QueryIncludeOptimized.EFClassic" Version="1.8.16" />
+  </ItemGroup>
+</Project>

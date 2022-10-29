@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Update";
+}
+@model Category
+
+
+<div class="main-panel">
+    <h1>Update category</h1>
+    <div class="image my-3">
+        <img width="300" src="~/assets/images/categories/@Model.ImageName" />
+    </div>
+    <form class="mt-3" method="post" enctype="multipart/form-data">
+        <div>
+            <label>Name</label> <br />
+            <input asp-for="Name" type="text" class="form-control" /> <br />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label>Image</label> <br />
+            <input asp-for="ImageFile" class="form-control" /> <br />
+            <span class="text-danger" asp-validation-for="ImageFile"></span>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-success" type="submit">Update</button>
+        </div>
+    </form>
+</div>

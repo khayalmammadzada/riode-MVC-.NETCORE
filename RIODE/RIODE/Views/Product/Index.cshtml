@@ -1,0 +1,237 @@
+﻿@{
+    ViewData["Title"] = "Product Page";
+}
+@model ShopIndexVM
+<main class="main">
+    <div class="page-header"
+         style="background-image: url('../../assets/images/shop/page-header-back.jpg'); background-color: #3C63A4;">
+        <h1 class="page-title ls-m">Riode Shop</h1>
+        <ul class="breadcrumb">
+            <li><a href="demo20.html"><i class="d-icon-home"></i></a></li>
+            <li class="delimiter">/</li>
+            <li>Riode Shop</li>
+        </ul>
+    </div>
+    <!-- End PageHeader -->
+    <div class="page-content mb-10 pb-6">
+        <div class="container">
+            <div class="row gutter-lg main-content-wrap">
+                <aside class="col-lg-3 sidebar sidebar-fixed sidebar-toggle-remain shop-sidebar sticky-sidebar-wrapper">
+                    <div class="sidebar-overlay"></div>
+                    <a class="sidebar-close" href="#"><i class="d-icon-times"></i></a>
+                    <div class="sidebar-content">
+                        <div class="sticky-sidebar" data-sticky-options="{'top': 10}">
+                            <div class="filter-actions mb-4">
+                                <a href="#"
+                                   class="sidebar-toggle-btn toggle-remain btn btn-outline btn-primary btn-rounded btn-icon-right">
+                                    Filter<i class="d-icon-arrow-left"></i>
+                                </a>
+                                <a href="#" class="filter-clean">Clean All</a>
+                            </div>
+                           
+                            <div class="widget widget-collapsible">
+                                <h3 class="widget-title">Filter by Price</h3>
+                                <div class="widget-body mt-3">
+                                    <form asp-controller="Product" asp-action="Index" method="Post" id="FilterForm" class="sidebar-widget price_range range mb-30">
+                                        <div class="widget widget-collapsible">
+                                            <h3 class="widget-title">All Categories</h3>
+                                            <div class="widget-body filter-items search-ul custome-checkbox">
+                                                @foreach (var category in Model.Categories)
+                                                {
+                                                    <input class="form-check-input mb-3" type="checkbox" name="CategoryIds" value="@category.Id" id="category@(category.Id)" value="" />
+                                                    <label class="form-check-label" for="category@(category.Id)"><span>@category.Name (@category.Products.Count)</span></label>
+                                                    <br />
+                                                }
+
+                                            </div>
+                                        </div>
+                                        <label>From</label>
+                                        <input name="MinPrice" type="number" style="-webkit-appearance:checkbox !important; border:solid !important; width:25px" placeholder="$" />
+                                        <label>To</label>
+                                        <input name="MaxPrice" type="number" style="-webkit-appearance: checkbox !important; border: solid !important; width: 25px" placeholder="$" />
+                                        <br />
+                                        
+                                        <div class="widget widget-collapsible">
+                                            <h3 class="widget-title">Brands</h3>
+                                            <div class="widget-body filter-items">
+                                                @foreach (var brand in Model.Brands)
+                                                {
+                                                    <input class="form-check-input" type="checkbox" name="BrandIds" value="@brand.Id" id="brand@(brand.Id)" value="" />
+                                                    <label class="form-check-label" for="brand@(brand.Id)"><span>@brand.Name @(brand.Products.Count)</span></label>
+                                                    <br />
+                                                }
+                                            </div>
+                                        </div>
+                                        <button type="submit"
+                                                class="btn btn-dark btn-filter btn-rounded mt-2">
+                                            Filter
+                                        </button>
+                                    </form><!-- End Filter Price Form -->
+                                </div>
+                            </div>
+                          
+                            <div class="widget widget-products mt-2">
+                                <h4 class="widget-title border-no pb-0 text-normal">Our Featured</h4>
+                                <div class="widget-body">
+                                    <div class="owl-carousel owl-nav-top row cols-1" data-owl-options="{
+												'items': 1,
+												'loop': true,
+												'nav': true,
+												'dots': false,
+                                              'margin': 20	}">
+                                        <div class="products-col">
+                                            @foreach (var product in Model.Products.Take(3))
+                                            {
+                                                <div class="product product-list-sm">
+                                                    <figure class="product-media">
+                                                        <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">
+                                                            @foreach (var prImg in product.ProductImages.Where(pi => pi.Status == true))
+                                                            {
+                                                                <img src="~/assets/images/products/@prImg.ImageUrl" alt="product"
+                                                                     width="100" height="100">
+                                                            }
+
+                                                        </a>
+                                                    </figure>
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">
+                                                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.Name</a>
+                                                        </h3>
+                                                        <div class="product-price">
+                                                            <span class="price">$@product.SellPrice</span>
+                                                        </div>
+                                                        <div class="ratings-container">
+                                                            <div class="ratings-full">
+                                                                @if (product.ReviewCount != 0)
+                                                                {
+                                                                    <span class="ratings" style="width:@((product.ReviewSum??0)/(product.ReviewCount??1))%"></span>
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="ratings" style="width:0%"></span>
+
+                                                                }
+                                                                <span class="tooltiptext tooltip-top"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div><!-- End Products Col -->
+                                        <div class="products-col">
+                                            
+                                        </div><!-- End Products Col -->
+                                    </div>
+                                </div>
+                            </div><!-- End Widget Products -->
+                        </div>
+                    </div>
+                </aside>
+                <div class="col-lg-9 main-content">
+                    <nav class="toolbox sticky-toolbox sticky-content fix-top">
+                        <div class="toolbox-left">
+                            <a href="#" class="toolbox-item left-sidebar-toggle btn btn-sm btn-outline btn-primary
+											btn-rounded btn-icon-right d-lg-none">Filter<i class="d-icon-arrow-right"></i></a>
+                            <div class="toolbox-item toolbox-sort select-box text-dark">
+                                <label>Sort By :</label>
+                                <select name="orderby"  class="form-control abc">
+                                    <option value="default">Default</option>
+                                    <option value="popularity" selected="selected">Most Popular</option>
+                                    <option value="rating">Average rating</option>
+                                    <option value="date">Latest</option>
+                                    <option value="price-low">Sort forward price low</option>
+                                    <option value="price-high">Sort forward price high</option>
+                                    <option value="">Clear custom sort</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="toolbox-right">
+                            <div class="toolbox-item toolbox-show select-box text-dark">
+                                <label>Show :</label>
+                                <select name="count" class="form-control">
+                                    <option value="12">12</option>
+                                    <option value="24">24</option>
+                                    <option value="36">36</option>
+                                </select>
+                            </div>
+                            <div class="toolbox-item toolbox-layout">
+                                <a href="shop-list.html" class="d-icon-mode-list btn-layout"></a>
+                                <a href="shop.html" class="d-icon-mode-grid btn-layout active"></a>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="row cols-2 cols-sm-3 product-wrapper list-view">
+                        <partial name="_ProductGridPartialView" model="@Model.Products">
+                    </div>
+                    <nav class="toolbox toolbox-pagination">
+                        <p class="show-info">Showing <span>12 of 56</span> Products</p>
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                @if (ViewBag.ActivePage > 1 && ViewBag.ActivePage <= ViewBag.PageCount)
+                                {
+                                    <a class="page-link page-link-prev" asp-route-page="@(ViewBag.ActivePage-1) aria-label="Previous"
+                                       aria-disabled="true">
+                                        <i class="d-icon-arrow-left"></i>Prev
+                                    </a>
+                                }
+                            </li>
+
+                            @for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                <li class="page-item active @(ViewBag.ActivePage == i?"active":"")" aria-current="page">
+                                    <a class="page-link" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+
+                            <li class="page-item">
+                                @if (ViewBag.ActivePage > 0 && ViewBag.ActivePage < ViewBag.PageCount)
+                                   {
+                                        <a class="page-link page-link-next" asp-route-page="@(ViewBag.ActivePage+1)" aria-label="Next">
+                                            Next<i class="d-icon-arrow-right"></i>
+                                        </a>
+                                   }
+                                     
+
+            
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@section scripts{
+    <script>
+        $("#FilterForm").on("submit", function (event) {
+            event.preventDefault();
+            var data = $(this).serialize();
+            console.log(data)
+            $.ajax({
+                type: "POST",
+                url: "/Product/Index",
+                data: data
+            }).done(function (res) {
+                $(".list-view").html(res)
+            });
+        });
+
+        $(".abc").on("change", function (event) {
+            var value = $(this).val();
+            alert(value);
+            @*var data = $(this).serialize();
+            console.log(data)
+            $.ajax({
+                type: "POST",
+                url: "/Product/Index",
+                data: data
+            }).done(function (res) {
+                $(".list-view").html(res)
+            });*@
+        });
+    </script>
+}

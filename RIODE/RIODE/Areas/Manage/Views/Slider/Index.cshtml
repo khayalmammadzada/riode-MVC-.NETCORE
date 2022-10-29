@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<Slider>
+
+<div class="main-panel">
+    <div>
+        <a asp-area="Manage" asp-controller="Slider" asp-action="Create" class="btn btn-success">Create new slider</a>
+    </div>
+    <div class="table-responsive pt-3">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Subtitle
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Slider slider in Model)
+                {
+                    <tr>
+                        <td>
+                            @slider.Title
+                        </td>
+                        <td>
+                            @slider.Subtitle
+                        </td>
+                        <td>
+                            <img style="width:150px !important; height:150px; object-fit:contain" src="~/assets/images/demos/demo1/slides/@slider.ImageUrl" alt="" />
+                        </td>
+                        <td class="d-flex">
+                            <div>
+                                <a asp-area="Manage" asp-controller="Slider" asp-action="Update" asp-route-id="@slider.Id" class="btn btn-warning">
+                                    <i class="mdi mdi-border-color"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a asp-area="Manage" asp-controller="Slider" asp-action="Delete" asp-route-id="@slider.Id" class="btn btn-danger">
+                                    <i class="mdi mdi-delete"></i>
+                                </a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

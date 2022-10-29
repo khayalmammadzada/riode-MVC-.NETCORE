@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<Subcategory>
+
+<div class="main-panel">
+    <div>
+        <a asp-area="Manage" asp-controller="Subcategory" asp-action="Create" class="btn btn-success">Create new subcategory</a>
+    </div>
+    <div class="table-responsive pt-3">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Subcategory subcategory in Model)
+                {
+                    <tr>
+                        <td>
+                            @subcategory.Name
+                        </td>
+                        <td>
+                            <img style="width:150px !important; height:150px; object-fit:contain" src="~/assets/images/categories/@subcategory.ImageName" alt="" />
+                        </td>
+                        <td class="d-flex">
+                            <div>
+                                <a asp-area="Manage" asp-controller="Subcategory" asp-action="Update" asp-route-id="@subcategory.Id" class="btn btn-warning">
+                                    <i class="mdi mdi-border-color"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a asp-area="Manage" asp-controller="Subcategory" asp-action="Delete" asp-route-id="@subcategory.Id" class="btn btn-danger">
+                                    <i class="mdi mdi-delete"></i>
+                                </a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

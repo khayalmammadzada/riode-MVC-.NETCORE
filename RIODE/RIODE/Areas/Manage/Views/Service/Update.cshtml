@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Update";
+}
+@model Service
+
+
+<div class="main-panel">
+    <h1>Update category</h1>
+    <form class="mt-3" method="post" enctype="multipart/form-data">
+        <div>
+            <label>Title</label> <br />
+            <input asp-for="Title" class="form-control" /> <br />
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+        <div>
+            <label>Subtitle</label> <br />
+            <input asp-for="Subtitle" class="form-control" /> <br />
+            <span class="text-danger" asp-validation-for="Subtitle"></span>
+        </div>
+        <div>
+            <label>Order</label> <br />
+            <input asp-for="Order" class="form-control" /> <br />
+            <span class="text-danger" asp-validation-for="Order"></span>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-success" type="submit">Update</button>
+        </div>
+    </form>
+</div>

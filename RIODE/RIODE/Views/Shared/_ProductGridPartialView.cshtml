@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Product>
+
+@foreach (var product in Model)
+{
+    <div class="product-wrap">
+        <div class="product text-center">
+            <figure class="product-media" style="background-color: #f7f8fa;">
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">
+
+                    @foreach (var prImg in product.ProductImages.Where(pi => pi.Status == true))
+                    {
+                        <img src="~/assets/images/products/@prImg.ImageUrl"
+                             alt="Blue Pinafore Denim Dress" width="300" height="338">
+                    }
+                    @foreach (var prImg in product.ProductImages.Where(pi => pi.Status == null))
+                    {
+                        <img src="~/assets/images/products/@prImg.ImageUrl"
+                             alt="Blue Pinafore Denim Dress" width="300" height="338">
+                    }
+
+                </a>
+
+                <div class="product-label-group">
+                    <label class="product-label label-top" style="background-color:@product.Badge?.Color">@product.Badge.Name</label>
+                </div>
+                <div class="product-action-vertical">
+                    <a asp-controller="Product" asp-action="AddBasket" asp-route-id="@product.Id" class="btn-product-icon addToCart">
+                        <i class="d-icon-bag"></i>
+                    </a>
+                    <a href="#" class="btn-product-icon btn-wishlist"
+                       title="Add to wishlist"><i class="d-icon-heart"></i></a>
+                </div>
+
+                <div class="product-action">
+                    <a href="#" class="btn-product btn-quickview" title="Quick View">
+                        Quick
+                        View
+                    </a>
+                </div>
+            </figure>
+            <div class="product-details">
+                <div class="product-cat">
+                    <a href="shop-grid-3cols.html">@product.Subcategory.Name</a>
+                </div>
+                <h3 class="product-name">
+                    <a href="demo20-product.html">@product.Name</a>
+                </h3>
+                <div class="product-price">
+                    <span class="price">$@product.SellPrice</span>
+                </div>
+                <div class="ratings-container">
+                    <div class="ratings-full">
+                        @if (product.ReviewCount != 0)
+                        {
+                            <span class="ratings" style="width:@((product.ReviewSum??0)/(product.ReviewCount??1))%"></span>
+
+                        }
+                        else
+                        {
+                            <span class="ratings" style="width:0%"></span>
+
+                        }
+                        <span class="tooltiptext tooltip-top"></span>
+                    </div>
+                    <a href="demo20-product.html" class="rating-reviews">( @product.ReviewCount )</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
